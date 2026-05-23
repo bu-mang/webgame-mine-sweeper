@@ -5,11 +5,8 @@ import { useEffect } from "react";
 import { TileType } from "@/types/tile";
 import usePlayingSwitch from "./usePlayingSwitch";
 import useMineLeft from "./useMineLeft";
-import useModal from "./useModal";
-
 const useCountTileMap = (tileMapArr?: TileType[][]) => {
   const { playingSwitchHandler, currentPlayingState } = usePlayingSwitch();
-  const { modalChangeHandler } = useModal();
   // 목표 타일 갯수 전역 관리
   const dispatchGoalAmount = useDispatch();
   const currentGoalAmount = useSelector((state: RootState) => {
@@ -41,7 +38,6 @@ const useCountTileMap = (tileMapArr?: TileType[][]) => {
 
     if (openedAmount === currentGoalAmount) {
       playingSwitchHandler("success");
-      modalChangeHandler("Success");
     }
     mineLeftHandler(flaggedAmount);
 

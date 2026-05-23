@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import useLevelSwitch from "./useLevelSwitch";
 import usePlayingSwitch from "./usePlayingSwitch";
+import useModal from "./useModal";
 import setScore from "@/utils/setScore";
 
 const useTimer = () => {
   const { currentLevel } = useLevelSwitch();
   const { currentPlayingState } = usePlayingSwitch();
+  const { modalChangeHandler } = useModal();
   const { TITLE } = currentLevel;
 
   const [time, setTime] = useState(0);
@@ -16,8 +18,8 @@ const useTimer = () => {
       return;
     } else if (currentPlayingState === "success") {
       const highscore = localStorage.getItem("highscore");
-      console.log(time, "time");
       setScore(TITLE, time, highscore);
+      modalChangeHandler("Success");
       return;
     } else if (currentPlayingState === "gameOver") {
       return;
