@@ -4,7 +4,7 @@
 
 ## 배포 링크
 
-https://webgame-mine-sweeper.vercel.app/
+https://webgame-mine-sweeper.netlify.app
 
 ## 구현 기간
 
